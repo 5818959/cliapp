@@ -8,6 +8,13 @@ namespace CliApplication;
 class FileLockApplication implements CliApplicationInterface
 {
     /**
+     * Lock file full name, i.e. /path/to/file.lock.
+     *
+     * @var string
+     **/
+    private $lockFile;
+
+    /**
      * Constructor.
      *
      * @param string $lockFile Lock file full name, i.e. /path/to/file.lock.
@@ -24,7 +31,7 @@ class FileLockApplication implements CliApplicationInterface
      */
     public function lock()
     {
-        if (self::isLocked()) {
+        if ($this->isLocked()) {
             return false;
         }
 
